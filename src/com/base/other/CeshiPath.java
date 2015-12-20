@@ -4,18 +4,18 @@ package com.base.other;
 import java.io.File;
 import java.io.IOException;
 /**
- * Â·¾¶»ñÈ¡²âÊÔ
+ * è·¯å¾„è·å–æµ‹è¯•
  * @author Administrator
  *
  */
 public class CeshiPath {
 public static void main(String[] args) {
 	System.out.println(System.getProperty("user.dir"));
-	File directory = new File("");//Éè¶¨Îªµ±Ç°ÎÄ¼ş¼Ğ
+	File directory = new File("");//è®¾å®šä¸ºå½“å‰æ–‡ä»¶å¤¹
 
 	    try {
-			System.out.println(directory.getCanonicalPath());//»ñÈ¡±ê×¼µÄÂ·¾¶
-		    System.out.println(directory.getAbsolutePath());//»ñÈ¡¾ø¶ÔÂ·¾¶
+			System.out.println(directory.getCanonicalPath());//è·å–æ ‡å‡†çš„è·¯å¾„
+		    System.out.println(directory.getAbsolutePath());//è·å–ç»å¯¹è·¯å¾„
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

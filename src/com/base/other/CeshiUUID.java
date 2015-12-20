@@ -2,7 +2,7 @@ package com.base.other;
 
 import java.util.UUID;
 /**
- * UUIDÀà²âÊÔ
+ * UUIDç±»æµ‹è¯•
  * @author Administrator
  *
  */
@@ -14,7 +14,7 @@ public static void main(String[] args) {
 	System.out.println("variant: "+uuid.variant());
 	System.out.println("getLeastSignificantBits: "+uuid.getLeastSignificantBits());
 	System.out.println("getMostSignificantBits: "+uuid.getMostSignificantBits());
-	//°üº¬¾ø¶ÔÖµµÄ64Î»UUID
+	//åŒ…å«ç»å¯¹å€¼çš„64ä½UUID
 	System.out.println("getMostSignificantBits: "+Math.abs(UUID.randomUUID().getMostSignificantBits()));
 }
 }

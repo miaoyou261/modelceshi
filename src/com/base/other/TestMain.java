@@ -14,41 +14,41 @@ import java.util.concurrent.FutureTask;
     new  TestMain().exec();
   }
   void exec() throws InterruptedException, ExecutionException{
-    //½øĞĞÒì²½ÈÎÎñÁĞ±í
+    //è¿›è¡Œå¼‚æ­¥ä»»åŠ¡åˆ—è¡¨
     List<FutureTask<Integer>> futureTasks = new ArrayList<FutureTask<Integer>>();
-    //Ïß³Ì³Ø ³õÊ¼»¯Ê®¸öÏß³Ì ºÍJDBCÁ¬½Ó³ØÊÇÒ»¸öÒâË¼ ÊµÏÖÖØÓÃ 
+    //çº¿ç¨‹æ±  åˆå§‹åŒ–åä¸ªçº¿ç¨‹ å’ŒJDBCè¿æ¥æ± æ˜¯ä¸€ä¸ªæ„æ€ å®ç°é‡ç”¨ 
     ExecutorService executorService = Executors.newFixedThreadPool(20);
     long start = System.currentTimeMillis();
-    //ÀàËÆÓërun·½·¨µÄÊµÏÖ CallableÊÇÒ»¸ö½Ó¿Ú£¬ÔÚcallÖĞÊÖĞ´Âß¼­´úÂë
+    //ç±»ä¼¼ä¸runæ–¹æ³•çš„å®ç° Callableæ˜¯ä¸€ä¸ªæ¥å£ï¼Œåœ¨callä¸­æ‰‹å†™é€»è¾‘ä»£ç 
     Callable<Integer> callable = new Callable<Integer>() {
       @Override
       public Integer call() throws Exception {
         Integer res = new Random().nextInt(100);
         Thread.sleep(1000);
-        System.out.println("ÈÎÎñÖ´ĞĞ:»ñÈ¡µ½½á¹û :"+res);
+        System.out.println("ä»»åŠ¡æ‰§è¡Œ:è·å–åˆ°ç»“æœ :"+res);
         return  res;
       }
     };
     
     for(int i=0;i<10;i++){
-      //´´½¨Ò»¸öÒì²½ÈÎÎñ
+      //åˆ›å»ºä¸€ä¸ªå¼‚æ­¥ä»»åŠ¡
       FutureTask<Integer> futureTask = new FutureTask<Integer>(callable);
       futureTasks.add(futureTask);
-      //Ìá½»Òì²½ÈÎÎñµ½Ïß³Ì³Ø£¬ÈÃÏß³Ì³Ø¹ÜÀíÈÎÎñ ÌØË¬°Ñ¡£
-             //ÓÉÓÚÊÇÒì²½²¢ĞĞÈÎÎñ£¬ËùÒÔÕâÀï²¢²»»á×èÈû
+      //æäº¤å¼‚æ­¥ä»»åŠ¡åˆ°çº¿ç¨‹æ± ï¼Œè®©çº¿ç¨‹æ± ç®¡ç†ä»»åŠ¡ ç‰¹çˆ½æŠŠã€‚
+             //ç”±äºæ˜¯å¼‚æ­¥å¹¶è¡Œä»»åŠ¡ï¼Œæ‰€ä»¥è¿™é‡Œå¹¶ä¸ä¼šé˜»å¡
       executorService.submit(futureTask); 
     }
     
     int count = 0;
        for (FutureTask<Integer> futureTask : futureTasks) {
-         //futureTask.get() µÃµ½ÎÒÃÇÏëÒªµÄ½á¹û 
-         //¸Ã·½·¨ÓĞÒ»¸öÖØÔØget(long timeout, TimeUnit unit) µÚÒ»¸ö²ÎÊıÎª×î´óµÈ´ıÊ±¼ä£¬µÚ¶ş¸öÎªÊ±¼äµÄµ¥Î»
+         //futureTask.get() å¾—åˆ°æˆ‘ä»¬æƒ³è¦çš„ç»“æœ 
+         //è¯¥æ–¹æ³•æœ‰ä¸€ä¸ªé‡è½½get(long timeout, TimeUnit unit) ç¬¬ä¸€ä¸ªå‚æ•°ä¸ºæœ€å¤§ç­‰å¾…æ—¶é—´ï¼Œç¬¬äºŒä¸ªä¸ºæ—¶é—´çš„å•ä½
          count+= futureTask.get();
   }
      long end = System.currentTimeMillis();
-     System.out.println("Ïß³Ì³ØµÄÈÎÎñÈ«²¿Íê³É:½á¹ûÎª:"+count+"£¬mainÏß³Ì¹Ø±Õ£¬½øĞĞÏß³ÌµÄÇåÀí");
-     System.out.println("Ê¹ÓÃÊ±¼ä£º"+(end-start)+"ms");
-     //ÇåÀíÏß³Ì³Ø 
+     System.out.println("çº¿ç¨‹æ± çš„ä»»åŠ¡å…¨éƒ¨å®Œæˆ:ç»“æœä¸º:"+count+"ï¼Œmainçº¿ç¨‹å…³é—­ï¼Œè¿›è¡Œçº¿ç¨‹çš„æ¸…ç†");
+     System.out.println("ä½¿ç”¨æ—¶é—´ï¼š"+(end-start)+"ms");
+     //æ¸…ç†çº¿ç¨‹æ±  
      executorService.shutdown();
     
   }

@@ -3,7 +3,7 @@ package com.base.other;
 
 import java.text.SimpleDateFormat;
 /**
- * Ê±¼äÈÕÆÚ×ª»»²âÊÔ
+ * æ—¶é—´æ—¥æœŸè½¬æ¢æµ‹è¯•
  * @author Administrator
  *
  */
@@ -13,7 +13,7 @@ public class Datetofilename {
 		SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddHHmmssSSS");  
 	    java.util.Date date=new java.util.Date();  
 	    String str=sdf.format(date);
-	    System.out.println("ÏÔÊ¾Õı³£ÈÕÆÚ: "+str);
+	    System.out.println("æ˜¾ç¤ºæ­£å¸¸æ—¥æœŸ: "+str);
 		return str;
 	}
 public static void main(String[] args) {
@@ -23,7 +23,7 @@ public static void main(String[] args) {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}//ÑÓ³Ù1000µÈÓÚ1Ãë
+		}//å»¶è¿Ÿ1000ç­‰äº1ç§’
 		getFileName();		
 	}
 }

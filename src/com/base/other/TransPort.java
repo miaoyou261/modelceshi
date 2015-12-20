@@ -3,7 +3,7 @@ package com.base.other;
 
 
 /**
- * ���۽�һ������������һ����������ֵ�ı䲢��Ӱ�������ԭ�����е�ֵ
+ * 结论将一个参数传入另一个方法后将其值改变并不影响对象在原方法中的值
  * @author Administrator
  *
  */

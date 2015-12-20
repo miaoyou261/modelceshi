@@ -9,8 +9,8 @@ import java.util.Enumeration;
 
 public class GetIP {
 	/**
-	 * ¿ÉÒÔÔÚlinuxÉÏ»ñÈ¡IPµÄÁĞ×Ó,ÃÀÖĞ²»×ãµÄÊÇÈç¹ûÒ»Ì¨·şÎñÆ÷¶à¸öIPµÄÇé¿öÏÂ²»ÊÊÓÃ
-	 * ÅÅ³ıÁË127.0.0.1Õâ¸öÄ¬ÈÏIP
+	 * å¯ä»¥åœ¨linuxä¸Šè·å–IPçš„åˆ—å­,ç¾ä¸­ä¸è¶³çš„æ˜¯å¦‚æœä¸€å°æœåŠ¡å™¨å¤šä¸ªIPçš„æƒ…å†µä¸‹ä¸é€‚ç”¨
+	 * æ’é™¤äº†127.0.0.1è¿™ä¸ªé»˜è®¤IP
 	 * @return
 	 */
 	public static String GetServiceIP() {
@@ -30,7 +30,7 @@ public class GetIP {
 		if (ip != null && ip instanceof Inet4Address)
 		{
 			if (!ip.getHostAddress().equals("127.0.0.1")) {
-				System.out.println("±¾»úµÄIP = " + ip.getHostAddress());
+				System.out.println("æœ¬æœºçš„IP = " + ip.getHostAddress());
 				return ip.getHostAddress();
 			}
 		}

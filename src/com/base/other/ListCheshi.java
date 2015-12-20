@@ -17,10 +17,10 @@ public static void main(String[] args) {
 
 public static void catString() {
 	List<String> mlist = new ArrayList<String>();
-	mlist.add("http://www.a-hospital.com/w/È«¹úÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔICU¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔÃÚÄòÍâ¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔ¹Ç¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
+	mlist.add("http://www.a-hospital.com/w/å…¨å›½åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥ICUç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥æ³Œå°¿å¤–ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥éª¨ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
 	for (String string : mlist) {
 		String src = "http://www.a-hospital.com/w/";
 		if (string.contains("http://www.a-hospital.com/w/")) {
@@ -31,45 +31,45 @@ public static void catString() {
 	
 }
 /**
- * ²âÊÔadd ºóÊı¾İÊÇ·ÅÈë×îÇ°»¹ÊÇ×îºó
- * ²âÊÔ½á¹û Êı¾İadd¶¼ÊÇÌí¼ÓÔÚÄ©Î²
+ * æµ‹è¯•add åæ•°æ®æ˜¯æ”¾å…¥æœ€å‰è¿˜æ˜¯æœ€å
+ * æµ‹è¯•ç»“æœ æ•°æ®addéƒ½æ˜¯æ·»åŠ åœ¨æœ«å°¾
  */
 public static void ceshiAdd() {
 
 	List<String> mlist = new ArrayList<String>();
-	mlist.add("http://www.a-hospital.com/w/È«¹úÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔICU¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔÃÚÄòÍâ¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔ¹Ç¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
+	mlist.add("http://www.a-hospital.com/w/å…¨å›½åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥ICUç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥æ³Œå°¿å¤–ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥éª¨ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
 	for (String string : mlist) {
 		System.out.println(string);
 	}
 	
 }
 /**
- * ²âÊÔ´«µİÎŞÊı¾İ²ÎÊıÊÇ·ñ¿ÉÒÔĞ´ÈëÊı¾İ
+ * æµ‹è¯•ä¼ é€’æ— æ•°æ®å‚æ•°æ˜¯å¦å¯ä»¥å†™å…¥æ•°æ®
  * List<String> oldUrl = null;
- * ²âÊÔ½á¹û -²»ÄÜ
+ * æµ‹è¯•ç»“æœ -ä¸èƒ½
  * List<String> oldUrl = new ArrayList<String>();
- * ²âÊÔÕı³£
+ * æµ‹è¯•æ­£å¸¸
  * @param oldUrl
  */
 public static void ceshiTransPort(List<String> oldUrl) {
-	oldUrl.add("²â°¡ÊÇ");
+	oldUrl.add("æµ‹å•Šæ˜¯");
 	for (String string : oldUrl) {
 		System.out.println(string);
 	}
 }
 /**
- * ²âÊÔ½á¹û - ListÖĞ°üº¬µÄÄ³ÌõÊı¾İÓëÖ®ÏàÍ¬¿ÉÒÔÓÃcontainsÅĞ¶Ï
+ * æµ‹è¯•ç»“æœ - Listä¸­åŒ…å«çš„æŸæ¡æ•°æ®ä¸ä¹‹ç›¸åŒå¯ä»¥ç”¨containsåˆ¤æ–­
  */
 public static void ceshiContains() {
 	List<String> mlist = new ArrayList<String>();
-	mlist.add("http://www.a-hospital.com/w/È«¹úÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔICU¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔÃÚÄòÍâ¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	mlist.add("http://www.a-hospital.com/w/ÒÔ¹Ç¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í");
-	String o = "http://www.a-hospital.com/w/ÒÔ¹Ç¿ÆÎªÖØµã¿ÆÊÒµÄÒ½ÔºÁĞ±í";
+	mlist.add("http://www.a-hospital.com/w/å…¨å›½åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥ICUç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥æ³Œå°¿å¤–ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	mlist.add("http://www.a-hospital.com/w/ä»¥éª¨ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨");
+	String o = "http://www.a-hospital.com/w/ä»¥éª¨ç§‘ä¸ºé‡ç‚¹ç§‘å®¤çš„åŒ»é™¢åˆ—è¡¨";
 	if (mlist.contains(o)) {
 		System.out.println(o);
 	}

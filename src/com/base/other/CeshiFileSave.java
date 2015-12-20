@@ -4,7 +4,7 @@ package com.base.other;
 import java.io.File;
 import java.io.IOException;
 /**
- * Í¼Æ¬´æ´¢²âÊÔ
+ * å›¾ç‰‡å­˜å‚¨æµ‹è¯•
  * @author Administrator
  *
  */
@@ -13,12 +13,12 @@ public static void main(String[] args) {
 	FileNotOrExist();
 }
 /**
- * ²âÊÔÎÄ¼şÊÇ·ñ´æÔÚÅĞ¶Ï
+ * æµ‹è¯•æ–‡ä»¶æ˜¯å¦å­˜åœ¨åˆ¤æ–­
  */
 public static void FileNotOrExist() {
 	File file = new File("c:\\tem.txt");
 	if (!file.exists()) {
-		System.out.println("ÎÄ¼ş²»´æÔÚ");
+		System.out.println("æ–‡ä»¶ä¸å­˜åœ¨");
 		 try {
 			file.createNewFile();
 		} catch (IOException e) {
@@ -27,11 +27,11 @@ public static void FileNotOrExist() {
 		}		
 	}else{
 
-		System.out.println("ÎÄ¼ş´æÔÚ");
+		System.out.println("æ–‡ä»¶å­˜åœ¨");
 	}
 }
 /**
- * ²âÊÔÍ¼Æ¬´æ´¢
+ * æµ‹è¯•å›¾ç‰‡å­˜å‚¨
  */
 public void photoSave() {
 	File file = new File("c:\\A\\B\\C");

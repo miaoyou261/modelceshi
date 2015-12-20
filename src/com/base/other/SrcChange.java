@@ -4,8 +4,8 @@ package com.base.other;
 
 public class SrcChange {
 /**
- * webÂ·¾¶×ª»»³ÉÎÄ¼şÂ·¾¶
- * ×¢Òâ : ÒªÈ¥³ıµôĞ­ÒéIPµÈ
+ * webè·¯å¾„è½¬æ¢æˆæ–‡ä»¶è·¯å¾„
+ * æ³¨æ„ : è¦å»é™¤æ‰åè®®IPç­‰
  * @param url
  */
 public static String URLtoURI(String url) {
@@ -20,7 +20,7 @@ public static String URLtoURI(String url) {
 	
 }
 /**
- * ÎÄ¼şÂ·¾¶×ª»»³ÉwebÂ·¾¶
+ * æ–‡ä»¶è·¯å¾„è½¬æ¢æˆwebè·¯å¾„
  * @param uri
  * @return
  */
@@ -28,25 +28,25 @@ public static String URLtoURI(String url) {
 public static String URItoURl(String uri) {
 
 	String url ="";
-	String[] uris = uri.split("\\\\");//Ó¦Îª¡°\¡±±¾Éí¾ÍÊÇ×ªÒÂ·şËùÒÔÒ»¸ö¡°\¡±¾ÍµÈÓÚÊÇ¡°\\¡±×ªÒå³öÀ´µÄ ËùÒÔÕâÀï¾ÍÊÇ4¸ö"\"
+	String[] uris = uri.split("\\\\");//åº”ä¸ºâ€œ\â€æœ¬èº«å°±æ˜¯è½¬è¡£æœæ‰€ä»¥ä¸€ä¸ªâ€œ\â€å°±ç­‰äºæ˜¯â€œ\\â€è½¬ä¹‰å‡ºæ¥çš„ æ‰€ä»¥è¿™é‡Œå°±æ˜¯4ä¸ª"\"
 	for (String  s : uris) {
 		if (s.length()>0) {
 			url+="/"+s;			
 		}
 	}	
-//	System.out.println("´íÎóµÄÂ·¾¶:"+url);
-//	System.out.println("ÕıÈ·Â·¾¶:"+url.substring(0,url.length()-1));//È¥µô×îºóÒ»¸ö×Ö·û
-//	System.out.println("ÎÄ¼şÂ·¾¶:"+uri);
+//	System.out.println("é”™è¯¯çš„è·¯å¾„:"+url);
+//	System.out.println("æ­£ç¡®è·¯å¾„:"+url.substring(0,url.length()-1));//å»æ‰æœ€åä¸€ä¸ªå­—ç¬¦
+//	System.out.println("æ–‡ä»¶è·¯å¾„:"+uri);
 	return url;
 }
 /**
- * ½«¾ø¶ÔÂ·¾¶×ª»»³ÉÏà¶ÔÂ·¾¶
- * @param urlStart ÏîÄ¿ÆğÊ¼Â·¾¶
- * @param Url	×ª»»ºóµÄÏà¶ÔÂ·¾¶
- * @return	·´À¡Ïà¶ÔÂ·¾¶
+ * å°†ç»å¯¹è·¯å¾„è½¬æ¢æˆç›¸å¯¹è·¯å¾„
+ * @param urlStart é¡¹ç›®èµ·å§‹è·¯å¾„
+ * @param Url	è½¬æ¢åçš„ç›¸å¯¹è·¯å¾„
+ * @return	åé¦ˆç›¸å¯¹è·¯å¾„
  */
 public static String getSrc(String urlStart ,String Url) {
-	if (urlStart!=null&&Url!=null) {//²ÎÊı²»Îª¿Õ
+	if (urlStart!=null&&Url!=null) {//å‚æ•°ä¸ä¸ºç©º
 		if (urlStart.equals(Url.subSequence(0, urlStart.length()))) {//
 			return Url.subSequence(urlStart.length(),Url.length()).toString();
 		}
@@ -57,17 +57,17 @@ public static String getSrc(String urlStart ,String Url) {
 public static void main(String[] args) {
 	String uri = "E:\\workspace\\EclipseWorkSpace\\javademo\\public\\picture\\Credentials\\max9640533c-15cb-4e9f-8d89-8084af5db29420151127144552807.jpg";
 	String URl="";
-	URItoURl(uri);//ÕâÀï½ö½öÊÇ½«Â·¾¢µÄÕıĞ±¸Ü´¦Àí³É·´Ğ±¸Ü £¬web»¹²»ÄÜ·ÃÎÊ
+	URItoURl(uri);//è¿™é‡Œä»…ä»…æ˜¯å°†è·¯åŠ²çš„æ­£æ–œæ å¤„ç†æˆåæ–œæ  ï¼Œwebè¿˜ä¸èƒ½è®¿é—®
 	System.out.println(URl);
 	String s = System.getProperty("user.dir");
 	System.out.println(System.getProperty("user.dir"));
 	System.out.println(getSrc(s,uri));
 	System.out.println(URItoURl(getSrc(s,uri)));
 
-	//»¹Òª¼ÓÉÏĞ­Òé
+	//è¿˜è¦åŠ ä¸Šåè®®
 	URl = "http://"+GetIP.GetServiceIP()+":9000"+URItoURl(getSrc(s,uri));
 	System.out.println(URl);
 	System.out.println(URLtoURI(URl));
-	//»ñÈ¡±¾»ú¾ÖÓòÍøµÄIPµØÖ·-Êµ¼ÊÉÏ¿ÉÄÜ»¹ĞèÒª¹ãÓòÍøµÄIPµØÖ·
+	//è·å–æœ¬æœºå±€åŸŸç½‘çš„IPåœ°å€-å®é™…ä¸Šå¯èƒ½è¿˜éœ€è¦å¹¿åŸŸç½‘çš„IPåœ°å€
 }
 }
