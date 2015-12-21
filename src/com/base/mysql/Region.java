@@ -2,12 +2,31 @@ package com.base.mysql;
 
 
 public class Region {
+
+	public String regionCode;
+	public String parentRegionCode;
+	public String retionName;
+	public String hasSubRegion;
+	public String level;
 	
-	public String regionCode;//区域代码
-	public String parentRegionCode;//父级区域代码
-	public String retionName;//区域名
-	public String hasSubRegion;//深度级别
-	
+	public Region() {
+	}
+	public Region(String regionCode, String parentRegionCode, String retionName,String hasSubRegion,String level) {
+
+	this.regionCode = regionCode;
+	this.parentRegionCode = parentRegionCode;
+	this.retionName = retionName;
+	this.hasSubRegion = hasSubRegion;
+	this.level = level;
+	}
+	@Override
+	public String toString() {
+	return "User [region_code=" + regionCode 
+			+ ", parent_region_code=" + parentRegionCode 
+			+ ", retion_name=" + retionName 
+			+ ", has_sub_region=" + hasSubRegion 
+			+ ", level="+ level + "]";
+	}
 	public String getRegionCode() {
 		return regionCode;
 	}
@@ -38,5 +57,6 @@ public class Region {
 	public void setLevel(String level) {
 		this.level = level;
 	}
-	public String level;
+	  
+	  
 }

@@ -1,7 +1,11 @@
 package com.base.mysql;
 
-public class Hospital {
-	public java.util.UUID id;
+import java.util.UUID;
+
+
+public class Hospital { 
+
+	public String id;
 	
 	public String HospitalName;//医院名称
 	
@@ -20,12 +24,42 @@ public class Hospital {
 	public String eMail;//电子邮箱
 	
 	public String hospitalWebsite;//医院网站
-	
-	public java.util.UUID getId() {
+	public Hospital() {
+	}
+	public Hospital(String id ,String HospitalName, String regionCode, String address,String HospitalTel,
+			String HospitalGrade,String keyDepartments,String ModeOfOperation,String eMail,String hospitalWebsite) {
+
+	this.id = id;
+	this.HospitalName = HospitalName;
+	this.regionCode = regionCode;
+	this.address = address;
+	this.HospitalTel = HospitalTel;
+	this.HospitalGrade = HospitalGrade;
+	this.keyDepartments = keyDepartments;
+	this.ModeOfOperation = ModeOfOperation;
+	this.eMail = eMail;
+	this.hospitalWebsite = hospitalWebsite;
+	}
+	@Override
+	public String toString() {
+	return "User [id=" + id 
+			+ ", HospitalName=" + HospitalName 
+			+ ", regionCode=" + regionCode 
+			+ ", address=" + address 
+			+ ", HospitalTel=" + HospitalTel 
+			+ ", HospitalGrade=" + HospitalGrade 
+			+ ", keyDepartments=" + keyDepartments 
+			+ ", ModeOfOperation=" + ModeOfOperation 
+			+ ", eMail=" + eMail 
+			+ ", hospitalWebsite=" + hospitalWebsite 
+			+ "]";
+	}
+
+	public String getId() {
 		return id;
 	}
 
-	public void setId(java.util.UUID id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -101,7 +135,6 @@ public class Hospital {
 		this.hospitalWebsite = hospitalWebsite;
 	}
 
-	
 	
 
 }
