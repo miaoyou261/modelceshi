@@ -13,6 +13,29 @@ import java.util.List;
  */
 public class RegionDao {
 	// 添加用户
+			public void addSql(String sql) {
+				Connection conn = DBUtil.createConn();
+//				String sql = "insert into Hospital values(?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement ps = DBUtil.prepare(conn, sql);
+				try {
+//					ps.setString(1, u.getId());
+//					ps.setString(2, u.getHospitalName());
+//					ps.setString(3, u.getRegionCode());
+//					ps.setString(4, u.getAddress());
+//					ps.setString(5, u.getHospitalTel());
+//					ps.setString(6, u.getHospitalGrade());
+//					ps.setString(7, u.getKeyDepartments());
+//					ps.setString(8, u.getModeOfOperation());
+//					ps.setString(9, u.geteMail());
+//					ps.setString(10, u.getHospitalWebsite());
+					ps.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
+				DBUtil.close(ps);
+				DBUtil.close(conn);
+			}
+	// 添加用户
 	public void add(Region u) {
 		Connection conn = DBUtil.createConn();
 		String sql = "insert into Region values(?,?,?,?,?)";

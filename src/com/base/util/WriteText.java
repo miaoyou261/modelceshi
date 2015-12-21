@@ -81,7 +81,7 @@ public class WriteText {
 	 */
 	public static List<String> readTxtFile(String filePath){
         try {
-                String encoding="GBK";
+                String encoding="UTF-8";
                 File file=new File(filePath);
                 if(file.isFile() && file.exists()){ //判断文件是否存在
                     InputStreamReader read = new InputStreamReader(

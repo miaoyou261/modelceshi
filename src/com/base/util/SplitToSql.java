@@ -1,9 +1,10 @@
 package com.base.util;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
+
+import com.base.mysql.TestUser;
 
 public class SplitToSql {
 public static void main(String[] args) {
@@ -39,9 +40,36 @@ public static void main(String[] args) {
 //	}
 //	return conn;
 //}
+/**
+ * 分割每条数据 筛选title
+ * @param string
+ */
+public static void	spiltTitle(String string) {
+	if (string.length()>0) {
+		String[] str = string.split(",");
+		String[] str1 = str[0].split("医院列表");
+		List<String[]> lidtr = new ArrayList<String[]>();
+		for (String string2 : str1) {
+			string2 =string2.trim();
+			String string1 = readRegion(string2).trim();
+			lidtr.add(new String[]{"region_code",string1});
+			lidtr.add(new String[]{"retion_name",string2});
+			TestUser.ceshiRegionSql(lidtr);
+//			lidtr.add(new String[]{"region_code",string1});
+//			lidtr.add(new String[]{"region_code",string1});
+//			lidtr.add(new String[]{"region_code",string1});
+//			lidtr.add(new String[]{"region_code",string1});
+//			String[] parent_region_code = {"parent_region_code",string1};
+//			String[] retion_name = {"retion_name",string2};
+//			String[] has_sub_region = {"has_sub_region",string1};
+//			String[] level = {"level",string1};
+		}
+		
+	}
+}
 
 /**
- * 分割每条数据
+ * 分割每条数据 3W条数据
  * @param string
  */
 public static void	spiltRow(String string) {
@@ -84,12 +112,35 @@ public static void	spiltRow(String string) {
 	}
 }
 /**
- * 从文本读取数据
+ * 从文本读取数据医院信息
  */
 public static void readDate() {
 	List<String> strlist = WriteText.readTxtFile("c:\\hospitalDate.txt");
 	for (String string : strlist) {//读取行数据
-		spiltRow(string);
+//		spiltRow(string);
+		spiltTitle(string);
 	}
+}
+/**
+ * 从文本读取行政区域数据
+ * 返回区域代码
+ */
+public static String readRegion(String str) {
+	List<String> strlist = WriteText.readTxtFile("c:\\行政区域码表.txt");
+	for (String string : strlist) {//读取行数据
+		if (string.contains(str)) {
+//			try {
+//				byte[] b2=string.getBytes("utf-8");
+//				String ss=new String(b2,"utf-8");
+			string=string.trim();
+				String[] s =string.split("(?=[a-z]*[a-z])(?<=[0-9]*[0-9])|(?=[\\u4e00-\\u9fa5]*[\\u4e00-\\u9fa5])");
+				return s[0].trim();
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+		}
+	}
+	return null;
 }
 }
