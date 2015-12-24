@@ -3,11 +3,11 @@ package com.base.mysql;
 
 public class Region {
 
-	public String regionCode;
-	public String parentRegionCode;
-	public String retionName;
-	public String hasSubRegion;
-	public String level;
+	public String regionCode;//区域代码
+	public String parentRegionCode;//父区域代码
+	public String retionName;//区域名
+	public String hasSubRegion;//是否还有子地区
+	public String level;//级别
 	
 	public Region() {
 	}

@@ -7,6 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.base.util.LinksDate0;
+import com.base.util.WriteText;
+
 /**
  * @author lhy
  * @description 对用户的CRUD相关操作
@@ -100,24 +103,59 @@ public class RegionDao {
 		DBUtil.close(conn);
 	}
 
-	// 根据查询用户
-	public Region loadById(String id) {
+	// 根据地址查询
+	public Region loadByRetionName(String id,String parentId) {
 		Connection conn = DBUtil.createConn();
-		String sql = "select * from Region where region_code=?";
+		String sql = "select * from Region where retion_name like ?";
 		PreparedStatement ps = DBUtil.prepare(conn, sql);
 		Region region = null;
 		ResultSet rs = null;
 		try {
-			ps.setString(1, id);
+
+			ps.setString(1, id+"%");
 			rs = ps.executeQuery();
-			if (rs.next()) {
-				region = new Region();
-				region.setRegionCode(rs.getString("region_code"));
-				region.setParentRegionCode(rs.getString("parent_region_code"));
-				region.setRetionName(rs.getString("retion_name"));
-				region.setHasSubRegion(rs.getString("has_sub_region"));
-				region.setLevel(rs.getString("level"));
-			}
+			
+				while (rs.next()) {
+					String fu = rs.getString("parent_region_code");
+//					String fufu ="";
+					
+					Region regionfu = loadById(fu);
+					if (regionfu.getParentRegionCode()!=null) {
+						 fu = regionfu.getRetionName();
+//						 Region regionfufu = loadById(regionfu.getParentRegionCode());
+//						 if (regionfufu!=null) {
+//							 fufu = regionfufu.getRetionName();							
+//						}
+//						 if(fufu==null)fufu="";
+						 
+					}
+					
+					
+					region = new Region();
+					region.setRegionCode(rs.getString("region_code"));
+					region.setParentRegionCode(rs.getString("parent_region_code"));
+					region.setRetionName(rs.getString("retion_name"));
+					region.setHasSubRegion(rs.getString("has_sub_region"));
+					region.setLevel(rs.getString("level"));
+					//如果父类相同就跳出循环
+					if (parentId.contains(fu)) {
+						break;
+					}
+//					if (rs.getRow()>1&&parentId!=null) {
+//						Region str =  loadByRetionName(parentId,null);
+//						if(str.getRegionCode().equals(rs.getString("parent_region_code"))){
+//							System.out.println(str.getRegionCode());
+//							break;
+//						}else{
+////							WriteText.appendWrite("\n" +LinksDate0.time()+"查找父区域异常"+ parentId, "c:\\errorsave.txt");
+//							System.out.println("记录这个数据是否有问题"+parentId);
+//						}
+//					}
+					
+				}
+
+				
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -126,7 +164,66 @@ public class RegionDao {
 		DBUtil.close(conn);
 		return region;
 	}
+	
+	// 根据ID查询
+		public Region loadById(String id) {
+			Connection conn = DBUtil.createConn();
+			String sql = "select * from Region where region_code=?";
+			PreparedStatement ps = DBUtil.prepare(conn, sql);
+			Region region = null;
+			ResultSet rs = null;
+			try {
 
+				ps.setString(1, id); 
+				rs = ps.executeQuery();
+				
+					while (rs.next()) {
+						region = new Region();
+						region.setRegionCode(rs.getString("region_code"));
+						region.setParentRegionCode(rs.getString("parent_region_code"));
+						region.setRetionName(rs.getString("retion_name"));
+						region.setHasSubRegion(rs.getString("has_sub_region"));
+						region.setLevel(rs.getString("level"));
+						
+						
+					}
+
+					
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil.close(rs);
+			DBUtil.close(ps);
+			DBUtil.close(conn);
+			return region;
+		}
+		// 查询区域名信息
+		public  List<Region> selectRegion(String name ,String value) {
+			Connection conn = DBUtil.createConn();
+			String sql = "select * from Region where "+name+" IN ("+value+")";
+			PreparedStatement ps = DBUtil.prepare(conn, sql);
+			List<Region> list = new ArrayList<Region>();
+			ResultSet rs = null;
+			try {
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					Region region = new Region();
+					region.setRegionCode(rs.getString("region_code"));
+					region.setParentRegionCode(rs.getString("parent_region_code"));
+					region.setRetionName(rs.getString("retion_name"));
+					region.setHasSubRegion(rs.getString("has_sub_region"));
+					region.setLevel(rs.getString("level"));
+					list.add(region);
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			DBUtil.close(rs);
+			DBUtil.close(ps);
+			DBUtil.close(conn);
+			return list;
+		}
 	// 查询所有用户信息
 	public  List<Region> listRegion() {
 		Connection conn = DBUtil.createConn();

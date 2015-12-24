@@ -10,7 +10,7 @@ public static void main(String[] args) {
 //	ceshiUser();//测试USER
 }
 
-public static void ceshiHospitalSql(List<String[]> lidtr) {	
+public static void addHospitalSql(List<String[]> lidtr) {	
 	String name = "";//字段
 	String values = "";//值
 	for (String[] strings : lidtr) {
@@ -28,10 +28,10 @@ public static void ceshiHospitalSql(List<String[]> lidtr) {
 	// userDao.update(new User(2, "李四", "1234546"));// 更新Id为2的用户信息
 	// System.out.println(userDao.loadById(2)); // 查询Id为2的用户信息
 	// 列出所有的用户
-	List<Hospital> list = hospitaldao.listHospital();
-	for (Hospital u : list) {
-	System.out.println(u);
-	}
+//	List<Hospital> list = hospitaldao.listHospital();
+//	for (Hospital u : list) {
+//	System.out.println(u);
+//	}
 	
 }
 public static void ceshiHospital() {
@@ -58,24 +58,14 @@ public static void ceshiHospital() {
 	}
 	
 }
-public static void ceshiRegionSql(List<String[]> lidtr) {	
+public static void addRegionSql(List<String[]> lidtr) {	
 	RegionDao regiondao = new RegionDao();
 	String name = "";//字段
 	String values = "";//值
 	for (String[] strings : lidtr) {
 		if (strings.length>0&&strings[0].length()>0&&strings[1].length()>0) {
-			List<Region> list = regiondao.listRegion();
-			Boolean buer= true;
-			for (Region u : list) {
-				if (u.regionCode.equals(strings[1])) {
-					buer =false;
-				}
-			System.out.println(u.regionCode);
-			}
-			if (buer) {
 				name += strings[0]+",";
-				values += "'"+strings[1]+"',";					
-			}		
+				values += "'"+strings[1]+"',";		
 		}
 	}
 	name = name.substring(0, name.length()-1);
@@ -87,9 +77,24 @@ public static void ceshiRegionSql(List<String[]> lidtr) {
 	// userDao.update(new User(2, "李四", "1234546"));// 更新Id为2的用户信息
 	// System.out.println(userDao.loadById(2)); // 查询Id为2的用户信息
 	// 列出所有的用户
+//	List<Region> list = regiondao.listRegion();
+//	for (Region u : list) {
+//	System.out.println(u.regionCode);
+//	}
+	
+}
+public static void updateRegionSql(String lidtr) {	
+	RegionDao regiondao = new RegionDao();
+	String sql = "update Region set "+lidtr;
+	
+	regiondao.addSql(sql);//添加用户
+	// userDao.deleteById(1);// 删除Id为1的用户
+	// userDao.update(new User(2, "李四", "1234546"));// 更新Id为2的用户信息
+	// System.out.println(userDao.loadById(2)); // 查询Id为2的用户信息
+	// 列出所有的用户
 	List<Region> list = regiondao.listRegion();
 	for (Region u : list) {
-	System.out.println(u.regionCode);
+		System.out.println(u.regionCode);
 	}
 	
 }
