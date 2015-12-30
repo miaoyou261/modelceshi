@@ -79,11 +79,11 @@ public class RegionCode {
 	
 	/**
 	 * 删除数据库多余的数据
-	 * 如 【县 市辖区】
+	 * 如 【县 市辖区 市区】
 	 */
 	public static void delSqlRedundant() {
 		RegionDao regiondao = new RegionDao();
-		String value = "'县','市辖区'";//被删除的区域关键字
+		String value = "'县','市辖区','市区'";//被删除的区域关键字
 		List<Region> regionlist = regiondao.selectRegion("retion_name",value);
 		for (Region region : regionlist) {
 			List<Region> regionChildlist = regiondao.selectRegion("parent_region_code",region.getRegionCode());

@@ -3,8 +3,14 @@ package com.base.other;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/**
+ * 
+ * 
+ * @author Administrator
+ *
+ */
 public class ListCheshi {
+	
 public static void main(String[] args) {
 //	ceshiContains();
 //	List<String> oldUrl = new ArrayList<String>();
