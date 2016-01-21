@@ -14,17 +14,47 @@ import java.util.Map;
  */
 public class CeshiMap {
 
+	final private static Map<String, Object> programMapMap = new HashMap<String,Object>();
 	final private static Map<String,NameAge> programMap = new HashMap<String,NameAge>();
 	static List<NameAge> strlist = new ArrayList<NameAge>();
 	public static void main(String[] args) {
 //		howMuch();
+//		quote();
+//		compound();
+//		removeCeshi();
+		clearceshi();
+	}
+	/**
+	 * clear对再次PUT无影响
+	 * 测试清除数据后map的引用是否存在
+	 */
+	public static void clearceshi() {
+		quote();
+		programMap.clear();
 		quote();
 	}
 	/**
-	 * list通过Map引用删除后是否会出现位置
+	 * 测试使用remove后数据是被 【删除】还是被【删除引用】
 	 */
-	public void removeCeshi() {
-		
+	public static void removeCeshi() {
+		System.out.println("有多少"+programMap.size()+"条  ");
+		System.out.println("有多少"+strlist.size()+"条  ");
+//		System.out.println("有多少"+programMap.size()+"条  "+programMap.get(programMap.size()-1).age+"   "+programMap.get(programMap.size()-1).name);
+		programMap.remove("3k");
+		System.out.println("有多少"+programMap.size()+"条  ");
+		System.out.println("有多少"+strlist.size()+"条  ");
+//		System.out.println("有多少"+programMap.size()+"条  "+programMap.get(programMap.size()-1).age+"   "+programMap.get(programMap.size()-1).name);
+	}
+	/**
+	 * 向map 中放map的复合用法
+	 */
+	public static void compound() {
+		programMapMap.put("测试", programMap);
+		System.out.println(programMapMap.get("测试"));
+		Map<String,NameAge> map = (Map<String,NameAge>)programMapMap.get("测试");
+		for (String key : map.keySet()) {
+			   System.out.println("key= "+ key + " and value= " + map.get(key).age);
+			  }
 	}
 	
 	/**
@@ -50,20 +80,6 @@ public class CeshiMap {
 		}
 	}
 	
-	/*
-	 * 测试map内可以存放多少个对值 一个 还是N个
-	 * 结果- 可以容纳N条数据
-	 */
-//	public static void howMuch() {
-//		
-//		for (int i = 0; i < 10; i++) {
-//			programMap.put(i+"k", "v"+i);		
-//		}
-//		System.out.println(programMap.size());
-//		for (int i = 0; i < 10; i++) {
-//			System.out.println(programMap.get(i+"k"));	
-//		}
-//	}
 	
 
 }

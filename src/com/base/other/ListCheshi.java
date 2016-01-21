@@ -16,11 +16,38 @@ public static void main(String[] args) {
 //	List<String> oldUrl = new ArrayList<String>();
 //	ceshiTransPort(oldUrl);
 //	ceshiAdd();
-	catString();
+//	catString();
+	mergeList();
+}
+/**
+ * 使用 addAll 
+ * 合并list
+ */
+public static void mergeList() {
+	List<String> mlist0 = new ArrayList<String>();
+	mlist0.add("http://www.a-hospital.com/w/全国医院列表");
+	mlist0.add("http://www.a-hospital.com/w/以ICU科为重点科室的医院列表");
+	mlist0.add("http://www.a-hospital.com/w/以泌尿外科为重点科室的医院列表");
+	mlist0.add("http://www.a-hospital.com/w/以骨科为重点科室的医院列表");
+
+	List<String> mlist1 = new ArrayList<String>();
+	mlist1.add("全国医院列表");
+	mlist1.add("以ICU科为重点科室的医院列表");
+	mlist1.add("以泌尿外科为重点科室的医院列表");
+	mlist1.add("以骨科为重点科室的医院列表");
+//	List<String> mlist2 = null;//如果为空在添加的时候会报错
+	List<String> mlist2 = new ArrayList<String>();
+	mlist0.addAll(mlist1);
+	mlist0.addAll(mlist2);
+	for (String string : mlist0) {
+		System.out.println(string);
+	}
+	
 }
 
-
-
+/**
+ * 字符串截断
+ */
 public static void catString() {
 	List<String> mlist = new ArrayList<String>();
 	mlist.add("http://www.a-hospital.com/w/全国医院列表");
