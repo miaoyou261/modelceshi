@@ -24,10 +24,11 @@ public class Hospital {
 	public String eMail;//电子邮箱
 	
 	public String hospitalWebsite;//医院网站
+	public int ordernb;//医院网站
 	public Hospital() {
 	}
 	public Hospital(String id ,String HospitalName, String regionCode, String address,String HospitalTel,
-			String HospitalGrade,String keyDepartments,String ModeOfOperation,String eMail,String hospitalWebsite) {
+			String HospitalGrade,String keyDepartments,String ModeOfOperation,String eMail,String hospitalWebsite,int ordernb) {
 
 	this.id = id;
 	this.HospitalName = HospitalName;
@@ -39,6 +40,13 @@ public class Hospital {
 	this.ModeOfOperation = ModeOfOperation;
 	this.eMail = eMail;
 	this.hospitalWebsite = hospitalWebsite;
+	this.ordernb = ordernb;
+	}
+	public int getOrdernb() {
+		return ordernb;
+	}
+	public void setOrdernb(int ordernb) {
+		this.ordernb = ordernb;
 	}
 	@Override
 	public String toString() {
@@ -52,6 +60,7 @@ public class Hospital {
 			+ ", ModeOfOperation=" + ModeOfOperation 
 			+ ", eMail=" + eMail 
 			+ ", hospitalWebsite=" + hospitalWebsite 
+			+ ", ordernb=" + ordernb 
 			+ "]";
 	}
 

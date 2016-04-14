@@ -6,7 +6,7 @@ public class TestUser {
 public static void main(String[] args) {
 //	ceshiHospitalSql();//用SQL方式添加
 //	ceshiHospital();//添加医院信息
-	ceshiRegion();//更改区域代码	
+//	ceshiRegion();//更改区域代码	
 //	ceshiUser();//测试USER
 }
 
@@ -46,6 +46,7 @@ public static void ceshiHospital() {
 	hospital.setModeOfOperation("123456");//经营方式
 	hospital.seteMail("123456");//电子邮箱
 	hospital.setHospitalWebsite("123456");//医院网站
+	hospital.setOrdernb(0);//顺序
 	HospitalDao hospitaldao = new HospitalDao();
 	hospitaldao.add(hospital);//添加用户
 	// userDao.deleteById(1);// 删除Id为1的用户

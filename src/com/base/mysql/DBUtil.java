@@ -16,7 +16,7 @@ public class DBUtil {
 			// 获取连接(这里用户名为root，密码为空)
 			conn = DriverManager
 					.getConnection(
-							"jdbc:mysql://localhost/playdb?useUnicode=true&characterEncoding=utf-8",
+							"jdbc:mysql://localhost/ceshi?useUnicode=true&characterEncoding=utf-8",
 							"root", "123456");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();

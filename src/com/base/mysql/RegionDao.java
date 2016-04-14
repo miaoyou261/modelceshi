@@ -224,6 +224,42 @@ public class RegionDao {
 			DBUtil.close(conn);
 			return list;
 		}
+		/**
+		 * 查询数据
+		 * @param id 字段
+		 * @param value 索引值
+		 * @return
+		 */
+		public List<Region> selectSQL(String id,String expression, String... value) {
+			Connection conn = DBUtil.createConn();
+			String sql = "select * from Region where "+id+" "+expression+"?";
+			for (int i = 1; value.length>i; i++) {
+				sql += " "+value[i];
+			}
+			PreparedStatement ps = DBUtil.prepare(conn, sql);
+			List<Region> list = new ArrayList();
+//			Hospital hospital = null;
+			ResultSet rs = null;
+			try {
+				ps.setString(1, value[0]);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				Region region = new Region();
+				region.setRegionCode(rs.getString("region_code"));
+				region.setParentRegionCode(rs.getString("parent_region_code"));
+				region.setRetionName(rs.getString("retion_name"));
+				region.setHasSubRegion(rs.getString("has_sub_region"));
+				region.setLevel(rs.getString("level"));
+				list.add(region);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		DBUtil.close(rs);
+		DBUtil.close(ps);
+		DBUtil.close(conn);
+		return list;
+		}
 	// 查询所有用户信息
 	public  List<Region> listRegion() {
 		Connection conn = DBUtil.createConn();

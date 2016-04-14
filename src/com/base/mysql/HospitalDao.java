@@ -51,6 +51,7 @@ public class HospitalDao {
 			ps.setString(8, u.getModeOfOperation());
 			ps.setString(9, u.geteMail());
 			ps.setString(10, u.getHospitalWebsite());
+			ps.setInt(11, u.getOrdernb());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -82,16 +83,17 @@ public class HospitalDao {
 	// 更新用户
 	public void update(Hospital u) {
 		Connection conn = DBUtil.createConn();
-		String sql = "update user set id=?"
-				+ ",HospitalName=?"
-				+ ",regionCode=?"
+		String sql = "update Hospital set id=?"
+				+ ",hospital_name=?"
+				+ ",region_code=?"
 				+ ",address=?"
-				+ ",HospitalTel=?"
-				+ ",HospitalGrade=?"
-				+ ",keyDepartments=?"
-				+ ",ModeOfOperation=?"
-				+ ",eMail=?"
-				+ ",hospitalWebsite=?"
+				+ ",hospital_tel=?"
+				+ ",hospital_grade=?"
+				+ ",key_departments=?"
+				+ ",mode_of_operation=?"
+				+ ",e_mail=?"
+				+ ",hospital_website=?"
+				+ ",ordernb=?"
 				+ " where id=?";
 		PreparedStatement ps = DBUtil.prepare(conn, sql);
 		try {
@@ -105,7 +107,8 @@ public class HospitalDao {
 			ps.setString(8, u.getModeOfOperation());
 			ps.setString(9, u.geteMail());
 			ps.setString(10, u.getHospitalWebsite());
-			ps.setString(11, u.getId().toString());
+			ps.setInt(11, u.getOrdernb());
+			ps.setString(12, u.getId().toString());
 			ps.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -114,36 +117,60 @@ public class HospitalDao {
 		DBUtil.close(conn);
 	}
 
-	// 根据查询用户
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Hospital loadById(String id) {
+		List<Hospital> list = selectSQL("id","=",id);
+		if (list==null||list.size()==0) {
+			return null;
+		}
+		return list.get(0);
+	}
+	/**
+	 * 查询数据
+	 * @param id 字段
+	 * @param value 索引值
+	 * @return
+	 */
+	public List<Hospital> selectSQL(String id,String expression, String... value) {
 		Connection conn = DBUtil.createConn();
-		String sql = "select * from Hospital where id=?";
+		String sql = "select * from Hospital where "+id+" "+expression+"?";
+		for (int i = 1; value.length>i; i++) {
+			sql += " "+value[i];
+		}
 		PreparedStatement ps = DBUtil.prepare(conn, sql);
-		Hospital hospital = null;
+		List<Hospital> hospitalList = new ArrayList();
+//		Hospital hospital = null;
 		ResultSet rs = null;
 		try {
-			ps.setString(1, id);
-			rs = ps.executeQuery();
-			if (rs.next()) {
-				hospital = new Hospital();
-				hospital.setId(rs.getString("id"));
-				hospital.setHospitalName(rs.getString("hospital_name"));
-				hospital.setRegionCode(rs.getString("region_code"));
-				hospital.setAddress(rs.getString("address"));
-				hospital.setHospitalTel(rs.getString("hospital_tel"));
-				hospital.setHospitalGrade(rs.getString("hospital_grade"));
-				hospital.setKeyDepartments(rs.getString("key_departments"));
-				hospital.setModeOfOperation(rs.getString("mode_of_operation"));
-				hospital.seteMail(rs.getString("e_mail"));
-				hospital.setHospitalWebsite(rs.getString("hospital_website"));
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+			ps.setString(1, value[0]);
+		rs = ps.executeQuery();
+		while (rs.next()) {
+			Hospital hospital = new Hospital();
+			hospital.setId(rs.getString("id"));
+			hospital.setHospitalName(rs.getString("hospital_name"));
+			hospital.setRegionCode(rs.getString("region_code"));
+			hospital.setAddress(rs.getString("address"));
+			hospital.setHospitalTel(rs.getString("hospital_tel"));
+			hospital.setHospitalGrade(rs.getString("hospital_grade"));
+			hospital.setKeyDepartments(rs.getString("key_departments"));
+			hospital.setModeOfOperation(rs.getString("mode_of_operation"));
+			hospital.seteMail(rs.getString("e_mail"));
+			hospital.setHospitalWebsite(rs.getString("hospital_website"));
+			hospital.setOrdernb(rs.getInt("ordernb"));
+			hospitalList.add(hospital);
 		}
-		DBUtil.close(rs);
-		DBUtil.close(ps);
-		DBUtil.close(conn);
-		return hospital;
+	} catch (SQLException e) {
+		System.out.println(ps.toString());
+		e.printStackTrace();
+	}
+	DBUtil.close(rs);
+	DBUtil.close(ps);
+	DBUtil.close(conn);
+	return hospitalList;
 	}
 
 	// 查询所有用户信息
@@ -167,6 +194,7 @@ public class HospitalDao {
 				hospital.setModeOfOperation(rs.getString("mode_of_operation"));
 				hospital.seteMail(rs.getString("e_mail"));
 				hospital.setHospitalWebsite(rs.getString("hospital_website"));
+				hospital.setOrdernb(rs.getInt("ordernb"));
 			list.add(hospital);
 			}
 		} catch (SQLException e) {

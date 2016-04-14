@@ -107,7 +107,7 @@ public static int	spiltTitle(String string) {
 			if (hospital.getRegionCode()==null) {
 				System.out.println("区域代码为空");
 			}
-			System.out.println(hospital);
+//			System.out.println(hospital);
 		}
 	return 0;
 }
@@ -144,7 +144,7 @@ public static void	spiltRow(String string) {
  * 从文本读取数据医院信息
  */
 public static void readDate() {
-	List<String> strlist = WriteText.readTxtFile("c:\\MYhospitalDate.txt");
+	List<String> strlist = WriteText.readTxtFile("c:\\hospitalDate.txt");
 	for (String string : strlist) {//读取行数据
 //		spiltRow(string);
 		if (string.length()>0) {

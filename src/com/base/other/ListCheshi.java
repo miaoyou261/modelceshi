@@ -24,11 +24,12 @@ public static void main(String[] args) {
  * 合并list
  */
 public static void mergeList() {
-	List<String> mlist0 = new ArrayList<String>();
-	mlist0.add("http://www.a-hospital.com/w/全国医院列表");
-	mlist0.add("http://www.a-hospital.com/w/以ICU科为重点科室的医院列表");
-	mlist0.add("http://www.a-hospital.com/w/以泌尿外科为重点科室的医院列表");
-	mlist0.add("http://www.a-hospital.com/w/以骨科为重点科室的医院列表");
+	List<String> mlist0 = null;
+//	List<String> mlist0 = new ArrayList<String>();
+//	mlist0.add("http://www.a-hospital.com/w/全国医院列表");
+//	mlist0.add("http://www.a-hospital.com/w/以ICU科为重点科室的医院列表");
+//	mlist0.add("http://www.a-hospital.com/w/以泌尿外科为重点科室的医院列表");
+//	mlist0.add("http://www.a-hospital.com/w/以骨科为重点科室的医院列表");
 
 	List<String> mlist1 = new ArrayList<String>();
 	mlist1.add("全国医院列表");

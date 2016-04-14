@@ -15,7 +15,7 @@ public class JDBCLinks {
 	 */
 	private static Connection getConn() {
 	    String driver = "com.mysql.jdbc.Driver";
-	    String url = "jdbc:mysql://localhost:3306/ceshi";
+	    String url = "jdbc:mysql://localhost:3306/playdb";
 	    String username = "root";
 	    String password = "123456";
 	    Connection conn = null;

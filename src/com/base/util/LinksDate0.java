@@ -33,7 +33,8 @@ public class LinksDate0 {
 		urlDate.setOldUrl(oldUrl);
 		urlDate.setLinksUrl(linksUrl);
 		urlDate.setNewUrl(newUrl);
-		init("全国医院列表");		
+		init("全国医院列表");
+//		init("成都市青羊区医院列表");
 		 System.exit(0);
 	}
 	
@@ -68,6 +69,7 @@ public class LinksDate0 {
 					if (!GetLevel(doc1).contains(GetLevel(doc))) {// 是否是最底层的页面
 						splitStr(doc1);
 					}
+					splitStr(doc1);
 					checkBottom(doc1);//回调自身					
 				}
 			}
@@ -94,9 +96,9 @@ public class LinksDate0 {
 		if (url.contains("（尚未撰写）")) {
 			return null;
 		}
-//		if (url.contains("厦门市思明区医院列表")) {
-//			System.out.println();
-//		}
+		if (url.contains("成都市青羊区医院列表")) {
+			System.out.println();
+		}
 		urlDate.getLinksUrl().add(url);
 		doc = GetDate(srcHead + url + ".txt");// 查看本地是否有
 		if (doc == null) {
@@ -144,11 +146,11 @@ public class LinksDate0 {
 	public static Document geturl(String url) {// 这里需要重新改成连接N次就不据需连接了
 		Document doc = null;		
 		try {
-			while (doc == null) {
+//			while (doc == null) {
 //				Thread.sleep(30000);
 				doc = Jsoup.connect(url).get();
 				saceUrltoFile(url, doc);// 将获取的页面存入本地
-			}
+//			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			WriteText.appendWrite("\n" +time()+ url, "c:\\errorsave.txt");
@@ -229,8 +231,8 @@ public class LinksDate0 {
 			}
 			newDate+=str+"\n";
 		}	
-		System.out.println("截取医院以上的数据"+newDate);
-		 return doc = Jsoup.parse(newDate);			
+//		System.out.println("截取医院以上的数据"+newDate);
+		 return doc = Jsoup.parse(newDate);
 	}
 
 	/**

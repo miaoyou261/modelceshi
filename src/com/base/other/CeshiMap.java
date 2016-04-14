@@ -29,9 +29,8 @@ public class CeshiMap {
 	 * 测试清除数据后map的引用是否存在
 	 */
 	public static void clearceshi() {
-		quote();
-		programMap.clear();
-		quote();
+//		quote();
+		remvs();
 	}
 	/**
 	 * 测试使用remove后数据是被 【删除】还是被【删除引用】
@@ -78,6 +77,35 @@ public class CeshiMap {
 			//System.out.println("programMap.get(i+k)="+programMap.get(i+"k"));
 			System.out.println("strlist.get("+i+")"+strlist.get(i).age);
 		}
+	}
+	/**
+	 * 测试引用对象处理后对象是否变更
+	 * 结论 - 除基本类型外的引用是可以被变更的
+	 */
+	public static void remvs() {
+		
+		for (int i = 0; i < 10; i++) {
+			NameAge nameAge1 =new NameAge("name"+i,i);
+			strlist.add(nameAge1);			
+		}
+		for (int i = 0; i < strlist.size(); i++) {
+			programMap.put(i+"k", strlist.get(i));
+		}
+//		for (int i = 0; i < strlist.size(); i++) {
+//			NameAge nameage = programMap.get(i+"k");
+//			nameage.age=i*100;
+//		}
+//		for (int i = 0; i < strlist.size(); i++) {
+//			//System.out.println("programMap.get(i+k)="+programMap.get(i+"k"));
+//			System.out.println("strlist.get("+i+")"+strlist.get(i).age);
+//		}
+
+		System.out.println("strlist.get("+1+")删除前"+strlist.get(1).age);
+		System.out.println("programMap.get(1+k)删除前"+programMap.get(1+"k"));
+		strlist.remove(programMap.get(1+"k"));
+		programMap.remove(1+"k");
+		System.out.println("strlist.get("+1+")删除后"+strlist.get(1).age);
+		System.out.println("programMap.get(1+k)删除后"+programMap.get(1+"k"));
 	}
 	
 	
